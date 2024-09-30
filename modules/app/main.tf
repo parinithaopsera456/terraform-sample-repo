@@ -7,8 +7,9 @@ resource "aws_s3_bucket" "my_bucket" {
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.my_bucket.id
 
+  # Set versioning to enabled
   versioning_configuration {
-    status = "Enabled"
+    status = "Enabled"  # Correct usage
   }
 }
 
@@ -27,7 +28,7 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
           "s3:PutObject"
         ]
         Resource = [
-          "${aws_s3_bucket.my_bucket.arn}",
+          aws_s3_bucket.my_bucket.arn,
           "${aws_s3_bucket.my_bucket.arn}/*"
         ]
       }
