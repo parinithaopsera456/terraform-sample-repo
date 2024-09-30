@@ -5,4 +5,3 @@ provider "aws" {
   access_key = var.acc-key
   secret_key = var.secret
 }
-
