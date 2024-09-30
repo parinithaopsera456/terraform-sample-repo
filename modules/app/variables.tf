@@ -3,7 +3,7 @@
 variable "bucket_name" {
   description = "The name of the S3 bucket"
   type        = string
-  default     = "samples3bucketpari456"  
+  default     = "finalsamples3bucketpari" 
 }
 
 variable "acc-key" {
