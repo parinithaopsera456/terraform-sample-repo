@@ -4,11 +4,6 @@ resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
 }
 
-resource "aws_s3_bucket_acl" "my_bucket_acl" {
-  bucket = aws_s3_bucket.my_bucket.id
-  acl    = "private"  # Set the bucket ACL to private
-}
-
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.my_bucket.id
 
@@ -25,9 +20,7 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
     Statement = [
       {
         Effect = "Allow"
-        Principal = {
-          AWS = "arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_ROLE_NAME"  # Replace with your IAM ARN
-        }
+        Principal = "*"
         Action = [
           "s3:ListBucket",
           "s3:GetObject",
