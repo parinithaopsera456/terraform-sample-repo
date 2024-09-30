@@ -1,5 +1,15 @@
 # main.tf
 
+variable "acc-key" {
+  description = "AWS Access Key"
+  type        = string
+}
+
+variable "secret" {
+  description = "AWS Secret Key"
+  type        = string
+}
+
 resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
   acl    = "private"
