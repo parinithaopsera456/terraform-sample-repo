@@ -15,11 +15,16 @@ resource "aws_s3_bucket" "my_bucket" {
   acl    = "private"
 }
 
-# Optionally, you can add tags or versioning
+resource "aws_s3_bucket_acl" "my_bucket_acl" {
+  bucket = aws_s3_bucket.my_bucket.id
+  acl    = "private"  # Setting the ACL here
+}
+
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.my_bucket.id
 
+  # Corrected versioning configuration
   versioning_configuration {
-    enabled = true
+    status = "Enabled"  # Set the status here
   }
 }
