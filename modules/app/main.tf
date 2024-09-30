@@ -1,20 +1,14 @@
 # main.tf
 
-provider "aws" {
-  region     = "us-east-1"
-  access_key = var.acc-key  # Use the access key variable
-  secret_key = var.secret   # Use the secret key variable
-}
-
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = var.bucket_name  # Use the bucket name variable
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.my_bucket.id
 
   versioning_configuration {
-    status = "Enabled"  # Set the status for versioning
+    status = "Enabled"
   }
 }
 
